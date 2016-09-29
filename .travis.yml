@@ -18,4 +18,4 @@ android:
     - platform-tools
 
 script:
-  - ./gradlew :clean :build testDebugUnitTest
+  - ./gradlew :clean :lazy:testDebugUnitTest
