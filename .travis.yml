@@ -9,9 +9,10 @@ jdk: oraclejdk7
 
 android:
   components:
+    - tools
+    - tools
     - android-16
-    - android-24
-    - build-tools-23.0.1
+    - build-tools-24.0.3
 
 script:
   - ./gradlew :clean :build testDebugUnitTest
