@@ -50,4 +50,9 @@ dependencies {
 }
 
 apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/bintrayv1.gradle'
+
+task installLibrary << {
+    apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/bintrayv1.gradle'
+}
+
+installLibrary.dependsOn install
