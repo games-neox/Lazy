@@ -11,8 +11,9 @@ android:
   components:
     - tools
     - tools
-    - android-16
     - build-tools-24.0.3
+    - android-24
+    - platform-tools
 
 script:
   - ./gradlew :clean :build testDebugUnitTest
