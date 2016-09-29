@@ -10,6 +10,7 @@ jdk: oraclejdk7
 android:
   components:
     - android-16
+    - android-24
     - build-tools-23.0.1
 
 script:
