@@ -1,0 +1,13 @@
+#
+# Copyright (c) 2016 Games Neox. All rights reserved.
+#
+# This file is an original work developed by Games Neox
+#
+
+language: android
+jdk: oraclejdk7
+
+android:
+components:
+- android-16
+- build-tools-24.0.3
