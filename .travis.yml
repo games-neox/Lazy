@@ -18,7 +18,7 @@ android:
     - platform-tools
 
 script:
-  - ./gradlew :clean :lazy:testDebugUnitTest
+  - ./gradlew :clean :check :lazy:testDebugUnitTest
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

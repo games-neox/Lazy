@@ -57,7 +57,7 @@ task jacocoTestReport(type: JacocoReport) {
     }
 }
 
-:lazy:testDebugUnitTest.dependsOn jacocoTestReport
+check.dependsOn jacocoTestReport
 
 apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/installv1.gradle'
 
