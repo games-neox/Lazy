@@ -19,7 +19,3 @@ android:
 
 script:
   - ./gradlew :clean :lazy:testDebugUnitTest
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-

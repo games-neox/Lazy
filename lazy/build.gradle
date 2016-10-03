@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'jacoco'
 
 ext {
     bintrayRepo = 'maven'
@@ -49,15 +48,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile 'org.robolectric:robolectric:2.4'
 }
-
-task jacocoTestReport(type: JacocoReport) {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
-
-check.dependsOn jacocoTestReport
 
 apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/installv1.gradle'
 

@@ -1,7 +1,6 @@
 # Lazy
 
 [![CI Status](http://img.shields.io/travis/games-neox/Lazy.svg?style=flat)](https://travis-ci.org/games-neox/Lazy)
-[![Code Coverage](https://img.shields.io/codecov/c/github/games-neox/lazy/master.svg)](https://codecov/io/github/games-neox/lazy?branch=master)
 [![Download](https://api.bintray.com/packages/games-neox/maven/lazy/images/download.svg)](https://bintray.com/games-neox/maven/lazy/_latestVersion)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/games-neox/Lazy/blob/master/LICENSE)
 
