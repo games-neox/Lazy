@@ -44,15 +44,13 @@ android {
 
 dependencies {
     compile 'com.android.support:support-annotations:24.1.1'
+    compile 'com.gamesneox.defence:defence:0.1.0'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.robolectric:robolectric:2.4'
 }
 
-apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/installv1.gradle'
-
-task installLibrary << {
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/installv1.gradle'
     apply from: 'https://raw.githubusercontent.com/games-neox/JCenter/master/bintrayv1.gradle'
 }
-
-installLibrary.dependsOn install

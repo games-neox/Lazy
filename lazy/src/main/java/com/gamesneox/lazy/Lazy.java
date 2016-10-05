@@ -10,6 +10,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.lang.ref.WeakReference;
+
+import static com.gamesneox.defence.Defence.assertNotNull;
+
 
 
 /**
@@ -17,7 +21,7 @@ import android.util.Log;
  *
  * This API can be called from any thread. However it's up to the caller to take care of the thread-safety.
  */
-@SuppressWarnings("StringBufferReplaceableByString")
+@SuppressWarnings({ "Convert2Diamond", "StringBufferReplaceableByString" })
 public final class Lazy<T> {
 
     /**
@@ -38,6 +42,53 @@ public final class Lazy<T> {
         public @Nullable T get();
     }
 
+    /**
+     * @author Games Neox (games.neox@gmail.com)
+     */
+    private static final class InitialGetter<T> implements IGetter<T> {
+
+        private final @NonNull ILoader<T> mLoader;
+        private final @NonNull WeakReference<Lazy<T>> mWeakParent;
+
+        public InitialGetter(@NonNull Lazy<T> parent, @NonNull ILoader<T> loader) {
+            mLoader = loader;
+            mWeakParent = new WeakReference<Lazy<T>>(parent);
+        }
+
+        @Override
+        public @Nullable T get() {
+            // TODO: remove logs in release builds!
+            Log.v(LOG_TAG, "initial IGetter: Enter");
+
+            final T value = mLoader.load();
+
+            mWeakParent.get().mGetter = new TargetGetter<T>(value);
+
+            Log.v(LOG_TAG, new StringBuilder("initial IGetter: Exit(").append(value).append(")").toString());
+
+            return value;
+        }
+    }
+
+    /**
+     * @author Games Neox (games.neox@gmail.com)
+     */
+    private static final class TargetGetter<T> implements IGetter<T> {
+
+        private final @Nullable T mValue;
+
+        public TargetGetter(@Nullable T value) {
+            mValue = value;
+        }
+
+        @Override
+        public @Nullable T get() {
+            Log.v(LOG_TAG, new StringBuilder("target IGetter: Enter/Exit(").append(mValue).append(")").toString());
+
+            return mValue;
+        }
+    }
+
     private static final String LOG_TAG = Lazy.class.getSimpleName();
 
     private IGetter<T> mGetter;
@@ -49,33 +100,9 @@ public final class Lazy<T> {
      *         {@link #fastGet()}/{@link #safeGet()} invocation
      */
     public Lazy(final @NonNull ILoader<T> loader) {
-        // TODO: add preconditions!
+        assertNotNull(loader, "loader !");
 
-        mGetter = new IGetter<T>() {
-
-            @Override
-            public @Nullable T get() {
-                // TODO: remove logs in release builds!
-                Log.v(LOG_TAG, "initial IGetter: Enter");
-
-                final T value = loader.load();
-
-                mGetter = new IGetter<T>() {
-
-                    @Override
-                    public @Nullable T get() {
-                        Log.v(LOG_TAG,
-                                new StringBuilder("target IGetter: Enter/Exit(").append(value).append(")").toString());
-
-                        return value;
-                    }
-                };
-
-                Log.v(LOG_TAG, new StringBuilder("initial IGetter: Exit(").append(value).append(")").toString());
-
-                return value;
-            }
-        };
+        mGetter = new InitialGetter<T>(this, loader);
     }
 
     public synchronized @Nullable T safeGet() {

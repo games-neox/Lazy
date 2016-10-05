@@ -6,7 +6,6 @@
 
 package com.gamesneox.lazy;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -27,7 +26,6 @@ public class LazyTest {
      * invalid ({@code null}) loader provided
      */
     @SuppressWarnings("ConstantConditions")
-    @Ignore
     @Test(expected = NullPointerException.class)
     public void testLazy0() {
         new Lazy<String>(null);
