@@ -32,7 +32,7 @@ Lazy is available through [jcenter](https://bintray.com/bintray/jcenter). To ins
 
 ```gradle
 dependencies {
-    compile 'com.gamesneox.lazy:lazy:0.2.0'
+    compile 'com.gamesneox.lazy:lazy:0.3.0'
 }
 ```
 
