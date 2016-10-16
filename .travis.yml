@@ -18,4 +18,4 @@ android:
     - platform-tools
 
 script:
-  - ./gradlew :clean :lazy:testDebugUnitTest
+  - ./gradlew :clean :lazy:testDebugUnitTest :lazy:assembleRelease
