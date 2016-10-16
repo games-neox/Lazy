@@ -16,6 +16,8 @@
 
 -keep public class com.gamesneox.lazy.Lazy$ILoader { *; }
 
+-keepattributes Signature
+
 # OPTIMIZE
 -assumenosideeffects class android.util.Log {
     public static *** v(...);
