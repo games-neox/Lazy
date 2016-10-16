@@ -57,7 +57,6 @@ public final class Lazy<T> {
 
         @Override
         public @Nullable T get() {
-            // TODO: remove logs in release builds!
             Log.v(LOG_TAG, "initial IGetter: Enter");
 
             final T value = mLoader.load();

@@ -1,17 +1,43 @@
-# Add project specific ProGuard rules here.
-# By default, the flags in this file are appended to flags specified
-# in /Applications/adt-bundle-mac-x86_64-20140702/sdk/tools/proguard/proguard-android.txt
-# You can edit the include path and order by changing the proguardFiles
-# directive in build.gradle.
 #
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Copyright (c) 2016 Games Neox. All rights reserved.
+#
+# This file is an original work developed by Games Neox
+#
+# @author Games Neox (games.neox@gmail.com)
+#
 
-# Add any project specific keep options here:
+# GENERAL
+-verbose
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# SHRINK
+-keep public class com.gamesneox.lazy.Lazy { *; }
+
+-keep class com.gamesneox.lazy.Lazy$IGetter { *; }
+
+-keep public class com.gamesneox.lazy.Lazy$ILoader { *; }
+
+# OPTIMIZE
+-assumenosideeffects class android.util.Log {
+    public static *** v(...);
+    public static *** d(...);
+}
+
+-assumenosideeffects class com.gamesneox.defence.Defence {
+    public static void assertNotNull(...);
+    public static void assertCondition(...);
+}
+
+-assumenosideeffects class java.lang.StringBuilder {
+    public <init>(...);
+    public *** append(...);
+    public *** toString();
+}
+
+-optimizationpasses 3
+
+-optimizations !code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+
+# OBFUSCATE
+
+# PREVERIFY
+-dontpreverify
