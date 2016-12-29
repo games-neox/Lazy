@@ -8,12 +8,12 @@ ext {
     libraryName = 'Lazy'
     artifact = 'lazy'
 
-    libraryDescription = 'Simple lazy loader for Java/Kotlin'
+    libraryDescription = 'Simple lazy loader for Java'
 
     siteUrl = 'https://github.com/games-neox/Lazy'
     gitUrl = 'https://github.com/games-neox/Lazy.git'
 
-    libraryVersion = '0.4.2'
+    libraryVersion = '0.4.4'
 
     developerId = 'games-neox'
     developerName = 'Games Neox'
@@ -32,7 +32,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 24
         versionCode 1
-        versionName "0.4.2"
+        versionName "0.4.4"
     }
     buildTypes {
         release {

@@ -32,8 +32,10 @@ Lazy is available through [jcenter](https://bintray.com/bintray/jcenter). To ins
 
 ```gradle
 dependencies {
-    debugCompile 'com.gamesneox.lazy:lazy:0.4.2:debug@aar'
-    releaseCompile 'com.gamesneox.lazy:lazy:0.4.2:release@aar'
+    debugCompile 'com.gamesneox.lazy:lazy:0.4.4:debug@aar'
+    debugCompile 'com.gamesneox.defence:defence:0.4.1:debug@aar'
+    releaseCompile 'com.gamesneox.lazy:lazy:0.4.4:release@aar'
+    releaseCompile 'com.gamesneox.defence:defence:0.4.1:release@aar'
 }
 ```
 
